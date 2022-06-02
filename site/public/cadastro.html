@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Miranha | Clube</title>
+
+    <script src="./js/funcoes.js"></script>
+
+
+    <link rel="icon" href="./assets/mascara-homem-aranha-1.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+     
+</head>
+<body> 
+    <header class="cabeçalho">
+        <div class="caixacabeçalho"> 
+            <img class="gif" src="./assets/gifheader.gif">
+            <b>
+            <ul class="barranavegar">
+                <li>
+                    <a href="./joguinho.html">Joguinho</a>
+                </li>
+                <li>
+                    <a href="./login.html">Login</a>
+                </li>
+                <li> <a href="./index.html"><img class="logo" src="./assets/logo.png"></a> </li>
+                <li>
+                    <a href="./cadastro.html">Cadastro</a>
+                </li>
+                <li>
+                    <a href="./historia.html">História</a>
+                </li>
+            </ul> 
+        </b>
+        </div> 
+    </header>
+
+    <div class="wrapper">
+        <main>
+          <div class="fundoGradianteCadastro"> <br><br>
+            <h1 style="color: white;"> CADASTRO | MIRANHA</h1> <br>
+            <div class="fundoBrancoCadastro" id="div_cadastro" style="display: block;">
+              <!-- div1 cadastro empresa -->
+              <p>
+                <span class="spanNegrito">Digite o seu nome</span><br><br>
+                <input class="input01" placeholder="Ex:Peter" id="i_nome">
+              </p>
+    
+              <p>
+                <span class="spanNegrito">Digite seu sobrenome</span><br><br>
+                <input class="input02" placeholder="Ex:Parker" id="i_sobrenome">
+              </p>
+    
+              <p>
+                <span class="spanNegrito">Digite seu Email</span><br><br>
+                <input class="input01" placeholder="Ex: PeterParker@gmail.com" id="i_email">
+             </p>
+
+                <p>
+                    <span class="spanNegrito">Digite sua Senha</span><br><br>
+                    <input class="input02" type="password" placeholder="********" id="i_senha">
+                  </p>
+        
+                  <p>
+                    <span class="spanNegrito">Confirme Senha</span><br><br>
+                    <input class="input01" type="password" placeholder="********" id="i_confirma">
+                  
+                
+                <br> <br>
+
+                <a href="./login.html">Já tem cadastro? clique aqui!</a> <br> <br>
+
+                <a href="./login.html"><button id="botaocadastro" class="button01" onclick="Cadastrar()">Cadastrar</button></a>
+                
+              </p>
+            </div>
+        </div>
+
+</body>
+</html>
+
+<script>
+  function cadastrar() {
+      aguardar();
+
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nomeVar = i_nome.value;
+      var sobreVar = i_sobrenome.value;
+      var emailVar = i_email.value;
+      var senhaVar = i_senha.value;
+      var confirmacaoSenhaVar = i_confirma.value;
+
+      if (nomeVar == "" || sobreVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+          cardErro.style.display = "block"
+          mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+          finalizarAguardar();
+          return false;
+      }
+      else {
+          setInterval(sumirMensagem, 5000)
+      }
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              nomeServer: nomeVar,
+              sobreServer: sobreVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar
+          })
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+              cardErro.style.display = "block";
+
+              mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+              setTimeout(() => {
+                  window.location = "login.html";
+              }, "2000")
+              
+              limparFormulario();
+              finalizarAguardar();
+          } else {
+              throw ("Houve um erro ao tentar realizar o cadastro!");
+          }
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+      });
+
+      return false;
+  }
+
+  function sumirMensagem() {
+      cardErro.style.display = "none"
+  }
+
+</script>
