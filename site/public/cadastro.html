@@ -22,7 +22,7 @@
             <b>
             <ul class="barranavegar">
                 <li>
-                    <a href="./joguinho.html">Joguinho</a>
+                    <a href="./nivel.html">Nível de fã</a>
                 </li>
                 <li>
                     <a href="./login.html">Login</a>
@@ -74,7 +74,7 @@
 
                 <a href="./login.html">Já tem cadastro? clique aqui!</a> <br> <br>
 
-                <a href="./login.html"><button id="botaocadastro" class="button01" onclick="Cadastrar()">Cadastrar</button></a>
+                <button class="button01" onclick="cadastrar()">Cadastrar</button>
                 
               </p>
             </div>
@@ -85,7 +85,7 @@
 
 <script>
   function cadastrar() {
-      aguardar();
+      /* aguardar(); */
 
       //Recupere o valor da nova input pelo nome do id
       // Agora vá para o método fetch logo abaixo
@@ -102,9 +102,10 @@
           finalizarAguardar();
           return false;
       }
-      else {
+     /*  else {
           setInterval(sumirMensagem, 5000)
-      }
+      } */
+
 
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
@@ -125,9 +126,9 @@
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
-              cardErro.style.display = "block";
+              /* cardErro.style.display = "block";
 
-              mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+              mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login..."; */
 
               setTimeout(() => {
                   window.location = "login.html";
@@ -146,8 +147,8 @@
       return false;
   }
 
-  function sumirMensagem() {
+  /* function sumirMensagem() {
       cardErro.style.display = "none"
-  }
+  } */
 
 </script>

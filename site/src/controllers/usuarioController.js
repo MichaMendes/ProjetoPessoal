@@ -63,12 +63,15 @@ function entrar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
+    var sobre = req.body.sobreServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
+    } else if (sobre == undefined) {
+        res.status(400).send("Seu sobrenome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
@@ -76,7 +79,40 @@ function cadastrar(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, sobre, email, senha)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function votar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var votar = req.body.escolhaServer;
+    var email = req.body.emailServer
+
+    // Faça as validações dos valores
+    if (votar == undefined) {
+        res.status(400).send("Sua escolha está undefined!");
+    }  
+    else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } 
+    else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.votar(votar, email)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -97,6 +133,7 @@ function cadastrar(req, res) {
 module.exports = {
     entrar,
     cadastrar,
+    votar,
     listar,
     testar
 }

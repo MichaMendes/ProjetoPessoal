@@ -22,7 +22,7 @@
             <b>
             <ul class="barranavegar">
                 <li>
-                    <a href="./joguinho.html">Joguinho</a>
+                    <a href="./nivel.html">Nível de fã</a>
                 </li>
                 <li>
                     <a href="./login.html">Login</a>
@@ -56,10 +56,8 @@
                     <input class="input02" type="password" placeholder="********" id="i_senha">  
                 
                 <br> <br>
-
-            <a href="./validacao.html"> 
-                <button id="botaocadastro" class="button01" onclick="Entrar()">Entrar</button>
-            </a>
+ 
+                <button id="botaocadastro" class="button01" onclick="entrar()">Entrar</button>
               </p>
             </div>
         </div>
@@ -71,7 +69,7 @@
 
 
     function entrar() {
-        aguardar();
+        /* aguardar(); */
 
         var emailVar = i_email.value;
         var senhaVar = i_senha.value;

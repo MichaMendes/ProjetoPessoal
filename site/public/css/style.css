@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -512,6 +513,78 @@ body {
   .erro2{
     text-align: center;
     color: white;
+  }
+
+  .fundobrancovotacao{
+    margin-right: 0;
+    margin-left: 50vh;
+    width: 100%;
+    height: 110vh;
+    background-color: #cccccc;
+  }
+
+  .combojoguinho{
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    width: 206vh;
+    height: 40vh;
+    background-color: #cccccc;
+   }
+
+   .combojoguinho2{
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    width: 206vh;
+    height: 30vh;
+    background-color: #cccccc;
+   }
+
+   .combojoguinho3{
+     padding-top: 5vh;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    width: 206vh;
+    height: 30vh;
+    background-color: #cccccc;
+   }
+
+   .voto{
+     margin-top: 0vh;
+     margin-left: 3vh;
+     height: 28vh;
+     width: 48vh;
+   }
+
+   .votos{
+     display: flex;
+     flex-direction: column;
+     background-color: #2519c5;
+     text-align: center;
+     align-items: center;
+     margin-left: 50vh;
+     justify-content: center;
+     height: 50vh;
+   }
+
+   .inputvoto{
+     border-radius: 2vh;
+     height: 3vh;
+     width: 30vh;
+   }
+
+   .inputnome{
+    border-radius: 2vh;
+    height: 3vh;
+    width: 30vh;
   }
 
   

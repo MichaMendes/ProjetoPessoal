@@ -2,12 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/mascara-homem-aranha-1.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcquaTec | Tempo Real</title>
+    <title>Miranha | Votação </title>
 
+    <link rel="stylesheet" href="../css/style2.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="dashboards.css">
 
@@ -23,16 +24,19 @@
     <div class="janela">
 
 
-        <div class="header-left dash-header">
+        <div class="header-left">
 
-            <h1>AcquaTec</h1>
+            <img src="../assets/mascara-homem-aranha-1.png" width="50vh">
+            <h1 style="color:darkred ;">Miranha</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Olá, Aranha <span id="b_usuario">usuário</span>!</h3>
             </div>
 
             <div class="btn-nav">
-                <h3>Aquários</h3>
+               <a href="cards.html">
+                <h3>Votação</h3>
+               </a>
             </div>
 
             <div class="btn-nav-white">
@@ -43,17 +47,18 @@
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>decidir</h3>
                 </a>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
+                <a href="../index.html"><h3>Sair</h3></a>
+                
             </div>
 
         </div>
 
-        <div class="dash">
+        <!-- div class="dash">
             <div class="regua">
                 <div class="item-regua perigo-frio">
                     <h4>Perigo</h4>
@@ -110,13 +115,117 @@
 
             </div>
 
+        </div> -->
+    </div>
+
+    <div class="fundobrancovotacao">
+
+        <div class="combojoguinho">
+            <div>
+                <p><b>Peter Parker (Tobey)</b></p>
+                <img class="voto" src="https://static.ricmais.com.br/uploads/2021/08/tobey-maguire.jpg" alt="">
+            </div>
+
+            <div>
+                <p><b>Peter Parker (Andrew)</b></p>
+                <img class="voto"
+                    src="https://cdn.ome.lt/poawuY6IkhfVgZtOMOHX84F7BxQ=/1200x630/smart/extras/conteudos/andrew-garfield-homem-aranha.jpeg"
+                    alt="">
+            </div>
+
+            <div>
+                <p><b>Peter Parker (Tom)</b></p>
+                <img class="voto" src="https://br.web.img2.acsta.net/newsv7/20/07/16/16/01/0583165.jpg" alt="">
+            </div>
+
         </div>
+
+        <div class="combojoguinho2">
+            <div>
+                <p><b>Miles Morales </b></p>
+                <img class="voto" src="https://www.einerd.com.br/wp-content/uploads/2019/05/Miles-Morales-capa.png"
+                    alt="">
+            </div>
+
+            <div>
+                <p><b>Noir</b></p>
+                <img class="voto"
+                    src="https://ovicio.com.br/wp-content/uploads/2021/11/20211117-homem-aranha-noir-ovicio.jpg" alt="">
+            </div>
+
+            <div>
+                <p><b>Gwen stacy</b></p>
+                <img class="voto"
+                    src="https://cdn.ome.lt/n4pEqlHDA_cbVB6graxgGda9vXQ=/1200x630/smart/extras/conteudos/gwen-aranha_Gy5UYuq.JPG"
+                    alt="">
+            </div>
+        </div>
+
+        <div class="combojoguinho3">
+            <div>
+                <p><b>Peni Parker</b></p>
+                <img class="voto" src="https://assets.puzzlefactory.pl/puzzle/421/524/original.jpg" alt="">
+            </div>
+
+            <div>
+                <p><b>Peter Parker (Aranha-Verso)</b></p>
+                <img class="voto" src="https://observatoriodocinema.uol.com.br/wp-content/uploads/2018/10/spider-verse-peter-parker-header.jpg" alt="">
+            </div>
+
+            <div>
+                <p><b>Spider-Ham</b></p>
+                <img class="voto" src="https://br.web.img3.acsta.net/newsv7/19/01/30/00/20/2569024.jpg" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="votos">
+        <b>
+            <h2>Escreva o nome do Aranha favorita</h2> <br> <br> <input
+                 type="text" id="i_votar" placeholder="O nome deve igual ao da imagem ">
+        </b>
+
+        <br>
+
+        <button class="btn-votar" onclick="votar()">Votar</button>
     </div>
 
 
 </body>
 
 <script>
+
+function votar() {
+      /* aguardar(); */
+
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var escolhaVar = i_votar.value;
+      var emailVar = sessionStorage.EMAIL_USUARIO;
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/votar", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              escolhaServer: escolhaVar,
+              emailServer: emailVar
+          })
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+      });
+
+      return false;
+  }
 
     function atualizacaoPeriodica() {
         obterdados(1);
@@ -125,19 +234,19 @@
         obterdados(4);
 
         function sendData() {
-			var http = new XMLHttpRequest();
-			http.open('POST', 'http://localhost:3000/api/sendData', false);
-			http.send(null);
-		}
+            var http = new XMLHttpRequest();
+            http.open('POST', 'http://localhost:3000/api/sendData', false);
+            http.send(null);
+        }
 
         setInterval(() => {
-			sendData();
-		}, 2000);
+            sendData();
+        }, 2000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
     function obterdados(idAquario) {
-        fetch(`/medidas/tempo-real/${idAquario}`)
+        fetch(`/medidas/tempo-real/${aranha}`)
             .then(resposta => {
 
                 if (resposta.ok) {
@@ -162,7 +271,7 @@
 
     }
 
-    function alertar(temperatura, idAquario) {
+    function alertar(Aranha) {
         var limites = {
             muito_quente: 23,
             quente: 22,

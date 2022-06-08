@@ -38,7 +38,7 @@ body {
 .dash-right .avisos .div-form textarea {
   width: 100%;
   /* color: #E6005A; */
-  border: 3px solid #e6005a;
+  border: 3px solid red;
   background-color: white;
   border-radius: 5px;
 }
@@ -52,7 +52,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: red;
   width: 120px;
 }
 
@@ -65,7 +65,7 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  background-color: red;
   width: 80px;
 }
 
@@ -76,7 +76,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
+  border-bottom: 3px solid red;
   padding: 20px;
 }
 
@@ -89,7 +89,7 @@ body {
 }
 
 .div-results .feed-container {
-  background-color: #212124;
+  background-color: #0a0ae9;
   border-radius: 5px;
   margin-bottom: 80px;
 }
@@ -110,11 +110,12 @@ body {
 }
 
 .dash {
+  height: 100%;
   width: 75%;
   position: relative;
   top: 0;
   left: 25%;
-  background-color: #161618;
+  background-color: rgb(204, 203, 203);
 
   /* width: 75%;
     display: flex;
@@ -239,7 +240,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   padding: 10px 15px;
-  color: #e6005a;
+  color: red;
   background-color: white;
   margin: 5px;
   border-radius: 3px;
